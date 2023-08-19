@@ -15,7 +15,7 @@ export default function Logout() {
       setLoading(true);
       const baseUrl =
         "https://social-connect-app.vercel.app/" || "http://localhost:3000/";
-      const res = await axios.get(`${baseUrl}api/logout`);
+      const res = await axios.get(`/api/logout`);
       toast.success(res.data.message);
       setTimeout(() => {
         setLoading(false);

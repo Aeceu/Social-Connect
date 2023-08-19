@@ -21,7 +21,7 @@ export default function PostsList() {
         setLoading(true);
         const baseUrl =
           "https://social-connect-app.vercel.app/" || "http://localhost:3000/";
-        const res = await axios.get(`${baseUrl}api/post`);
+        const res = await axios.get(`/api/post`);
         setPostData(res.data);
       } catch (error) {
         toast.error("Failed to fetch posts!");
@@ -35,9 +35,9 @@ export default function PostsList() {
   async function handleDeletepost(id: string) {
     try {
       setLoading(true);
-      const res = await axios.delete(
-        `http://localhost:3000/api/post/new/${id}`
-      );
+      const baseUrl =
+        "https://social-connect-app.vercel.app/" || "http://localhost:3000/";
+      const res = await axios.delete(`/api/post/new/${id}`);
       toast.success(res.data.message);
       setRefresh(true);
     } catch (error: any) {

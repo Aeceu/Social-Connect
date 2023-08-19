@@ -18,7 +18,7 @@ export default function AsideInfo() {
     const fetchData = async () => {
       const baseUrl =
         "https://social-connect-app.vercel.app/" || "http://localhost:3000/";
-      const res = await axios.get(`${baseUrl}api/user/token`);
+      const res = await axios.get(`/api/user/token`);
       setUserData(res.data.userData);
     };
     fetchData();

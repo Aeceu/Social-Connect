@@ -56,7 +56,7 @@ export default function EditCard({ user }: Props) {
       setLoading(true);
       const baseUrl =
         "https://social-connect-app.vercel.app/" || "http://localhost:3000/";
-      const res = await axios.post(`${baseUrl}api/user/${user._id}`, data);
+      const res = await axios.post(`/api/user/${user._id}`, data);
       toast.success(res.data.message);
       setTimeout(() => {
         setLoading(false);

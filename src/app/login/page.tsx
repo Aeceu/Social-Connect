@@ -26,7 +26,7 @@ export default function LoginPage() {
       setLoading(true);
       const baseUrl =
         "https://social-connect-app.vercel.app/" || "http://localhost:3000/";
-      const res = await axios.post(`${baseUrl}api/login`, data);
+      const res = await axios.post(`/api/login`, data);
       toast.success(res.data.message);
       setTimeout(() => {
         setLoading(false);

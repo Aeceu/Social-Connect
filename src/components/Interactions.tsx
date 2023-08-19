@@ -46,7 +46,7 @@ export default function Interactions({ post }: Props) {
         setLoading(true);
         const baseUrl =
           "https://social-connect-app.vercel.app/" || "http://localhost:3000/";
-        const res = await axios.get(`${baseUrl}api/post/comment/${post._id}`);
+        const res = await axios.get(`/api/post/comment/${post._id}`);
         SetAllComments(res.data);
         setToggle(true);
       } catch (error: any) {
@@ -64,7 +64,7 @@ export default function Interactions({ post }: Props) {
       setCommentLoading(true);
       const baseUrl =
         "https://social-connect-app.vercel.app/" || "http://localhost:3000/";
-      const res = await axios.post(`${baseUrl}api/post/comment`, {
+      const res = await axios.post(`/api/post/comment`, {
         userID: post.creator._id,
         postID: post._id,
         comment: comment,
