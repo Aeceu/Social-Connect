@@ -1,7 +1,7 @@
 "use client";
 import { FaUserCircle } from "react-icons/fa";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Link from "next/link";
 import EditPostCard from "../Modals/EditPostCard";

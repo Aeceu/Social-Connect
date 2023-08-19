@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
-import { DataStore } from "@/state/getUserData";
 import useDataStore from "@/store/useDataStore";
 import axios from "axios";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";

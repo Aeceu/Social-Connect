@@ -1,5 +1,4 @@
 import jwt from "jsonwebtoken";
-import { cookies } from "next/headers";
 import { NextRequest } from "next/server";
 /*
     - In this file, we will get data from token and

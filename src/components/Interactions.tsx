@@ -1,8 +1,7 @@
-import Link from "next/link";
-import { FaComment, FaHeart } from "react-icons/fa6";
+"use client";
+import { FaComment } from "react-icons/fa6";
 import Likes from "./Likes";
-import { useEffect, useState } from "react";
-import useDataStore from "@/store/useDataStore";
+import { useState } from "react";
 import CommentBox from "./CommentBox";
 import axios from "axios";
 import { toast } from "react-hot-toast";
@@ -62,7 +61,7 @@ export default function Interactions({ post }: Props) {
 
   const AddNewComment = async () => {
     try {
-      setLoading(true);
+      setCommentLoading(true);
       const res = await axios.post("http://localhost:3000/api/post/comment", {
         userID: post.creator._id,
         postID: post._id,
@@ -74,7 +73,7 @@ export default function Interactions({ post }: Props) {
     } catch (error: any) {
       toast.error(error.message);
     } finally {
-      setLoading(false);
+      setCommentLoading(false);
     }
   };
 

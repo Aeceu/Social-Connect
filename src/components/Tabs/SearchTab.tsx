@@ -1,17 +1,5 @@
 "use client";
 import { AiOutlineSearch } from "react-icons/ai";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { FaUserCircle } from "react-icons/fa";
-import Link from "next/link";
-import { DataStore } from "@/state/getUserData";
-
-interface Props {
-  _id: string;
-  firstname: string;
-  lastname: string;
-  email: string;
-}
 
 export default function SearchTab() {
   return (
