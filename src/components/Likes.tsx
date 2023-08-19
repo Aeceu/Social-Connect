@@ -38,7 +38,9 @@ export default function Likes({ post }: Props) {
 
   async function handleLike() {
     try {
-      const res = await axios.post("http://localhost:3000/api/post/like", {
+      const baseUrl =
+        "https://social-connect-app.vercel.app/" || "http://localhost:3000/";
+      const res = await axios.post(`${baseUrl}api/post/like`, {
         creatorID: post.creator._id,
         likerID: userData._id,
         postID: post._id,

@@ -19,7 +19,9 @@ export default function PostsList() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("http://localhost:3000/api/post");
+        const baseUrl =
+          "https://social-connect-app.vercel.app/" || "http://localhost:3000/";
+        const res = await axios.get(`${baseUrl}api/post`);
         setPostData(res.data);
       } catch (error) {
         toast.error("Failed to fetch posts!");

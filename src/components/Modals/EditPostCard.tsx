@@ -44,10 +44,9 @@ export default function EditPostCard({ post, setToggleEdit }: Props) {
   const handleSubmit = async () => {
     try {
       setLoading(true);
-      const res = await axios.patch(
-        `http://localhost:3000/api/post/new/${post._id}`,
-        data
-      );
+      const baseUrl =
+        "https://social-connect-app.vercel.app/" || "http://localhost:3000/";
+      const res = await axios.patch(`${baseUrl}api/post/new/${post._id}`, data);
       toast.success(res.data.message);
       handleClick();
       setToggleEdit(false);

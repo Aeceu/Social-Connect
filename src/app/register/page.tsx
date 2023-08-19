@@ -34,7 +34,9 @@ export default function RegisterPage() {
     e.preventDefault();
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:3000/api/register", data);
+      const baseUrl =
+        "https://social-connect-app.vercel.app/" || "http://localhost:3000/";
+      const res = await axios.post(`${baseUrl}api/register`, data);
       toast.success(res.data.message);
       setTimeout(() => {
         setLoading(false);

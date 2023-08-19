@@ -20,8 +20,10 @@ export default function CreatePostCard() {
     e.preventDefault();
     try {
       setLoading(true);
+      const baseUrl =
+        "https://social-connect-app.vercel.app/" || "http://localhost:3000/";
       const res = await axios.post(
-        `http://localhost:3000/api/post/new/${userData._id}`,
+        `${baseUrl}api/post/new/${userData._id}`,
         post
       );
       console.log(post);
