@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 type Props = {
-  user: {
+  userData: {
     _id: string;
     firstname: string;
     lastname: string;
@@ -24,7 +24,8 @@ type dataProps = {
   occupation: string;
   location: string;
 };
-export default function EditCard({ user }: Props) {
+
+export default function EditCard({ userData }: Props) {
   const [toggle, setToggle] = useState(false);
   const [data, setData] = useState<dataProps>({
     _id: "",
@@ -38,12 +39,12 @@ export default function EditCard({ user }: Props) {
 
   useEffect(() => {
     setData({
-      _id: user._id,
-      firstname: user.firstname,
-      lastname: user.lastname,
-      email: user.email,
-      occupation: user.occupation,
-      location: user.location,
+      _id: userData._id,
+      firstname: userData.firstname,
+      lastname: userData.lastname,
+      email: userData.email,
+      occupation: userData.occupation,
+      location: userData.location,
     });
   }, [toggle]);
 
@@ -52,19 +53,19 @@ export default function EditCard({ user }: Props) {
   };
 
   const handleSubmit = async () => {
+    ``;
     try {
       setLoading(true);
       const baseUrl =
         "https://social-connect-app.vercel.app/" || "http://localhost:3000/";
-      const res = await axios.post(`/api/user/${user._id}`, data);
+      const res = await axios.post(`/api/user/${userData._id}`, data);
       toast.success(res.data.message);
-      setTimeout(() => {
-        setLoading(false);
-        window.location.reload();
-      }, 500);
+      setData(res.data);
+      setToggle(false);
     } catch (error: any) {
-      setLoading(false);
       toast.error(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 

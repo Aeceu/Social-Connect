@@ -38,12 +38,10 @@ export default function RegisterPage() {
         "https://social-connect-app.vercel.app/" || "http://localhost:3000/";
       const res = await axios.post(`/api/register`, data);
       toast.success(res.data.message);
-      setTimeout(() => {
-        setLoading(false);
-        router.push("/");
-      }, 500);
+      router.push("/login");
     } catch (error: any) {
       toast.error(error.response.data.error);
+    } finally {
       setLoading(false);
     }
   };

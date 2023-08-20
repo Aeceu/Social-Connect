@@ -46,15 +46,15 @@ export default function PostCard({
 
   return (
     <div className="border-b-[1px] border-white/50">
-      <Link
-        href={`/`}
-        className="flex justify-between items-center pr-4 cursor-pointer hover:bg-gray-900/30"
-      >
+      <div className="flex justify-between items-center pr-4 cursor-pointer ">
         {/* Display the user details */}
         <div className="p-4 flex gap-2 items-center">
-          <h1 className="cursor-pointer hover:bg-white/20 rounded-full">
+          <Link
+            href={`/profile/${post.creator._id}`}
+            className="cursor-pointer hover:bg-white/20 rounded-full"
+          >
             <FaUserCircle size="1.7rem" />
-          </h1>
+          </Link>
           <span className="flex items-center gap-2">
             <h1 className="font-bold text-lg">{`${post.creator.firstname} ${post.creator.lastname}`}</h1>
             <p className="text-xs text-white/70">{getDate(post.createdAt)}</p>
@@ -89,7 +89,7 @@ export default function PostCard({
             </div>
           )}
         </div>
-      </Link>
+      </div>
       {/* Displays the post and tag */}
       <div className="h-auto flex flex-col justify-between px-4 pb-4">
         <h1>{post?.post}</h1>

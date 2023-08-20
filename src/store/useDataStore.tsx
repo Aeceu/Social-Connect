@@ -71,6 +71,7 @@ const useDataStore = create<DataStore>((set, get) => ({
       ],
     },
   ],
+
   setPostData: (data) => {
     set({ postData: data });
   },
