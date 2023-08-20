@@ -33,6 +33,7 @@ export default function CommentBox({
     <>
       {toggle && (
         <div className="py-3">
+          {/* new comment box */}
           <div className="flex gap-2 items-center px-4 py-2">
             <Link
               href={`/profile/${commentorID}`}
@@ -99,7 +100,7 @@ function CommentCard({ data }: dataProps) {
         </Link>
         <span className="w-full flex flex-col">
           <h1 className="text-[10px]">{`${data.creatorID.firstname} ${data.creatorID.lastname}`}</h1>
-          <p className="text-md  px-3 py-1 rounded-b-full rounded-tr-full  bg-black border-[1px] border-white/50">
+          <p className="text-sm  px-3 py-1 rounded-b-full rounded-tr-full  bg-black border-[1px] border-white/50">
             {data.comment}
           </p>
         </span>

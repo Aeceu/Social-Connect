@@ -17,13 +17,11 @@ export default function Logout() {
         "https://social-connect-app.vercel.app/" || "http://localhost:3000/";
       const res = await axios.get(`/api/logout`);
       toast.success(res.data.message);
-      setTimeout(() => {
-        setLoading(false);
-        router.push("/login");
-      }, 1000);
+      router.push("/login");
     } catch (error) {
-      setLoading(false);
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 

@@ -30,6 +30,7 @@ export default function PostsList() {
       }
     };
     fetchData();
+    console.log("refetch!");
   }, [refresh]);
 
   async function handleDeletepost(id: string) {

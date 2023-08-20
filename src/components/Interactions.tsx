@@ -5,6 +5,7 @@ import { useState } from "react";
 import CommentBox from "./CommentBox";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import useDataStore from "@/store/useDataStore";
 
 type Props = {
   post: {
@@ -35,6 +36,7 @@ export default function Interactions({ post }: Props) {
   const [toggle, setToggle] = useState(false);
   const [AllComments, SetAllComments] = useState();
   const [comment, setComment] = useState("");
+  const userID = useDataStore((state) => state.userData._id);
 
   const handleToggle = () => {
     setToggle((prev) => !prev);
@@ -65,7 +67,7 @@ export default function Interactions({ post }: Props) {
       const baseUrl =
         "https://social-connect-app.vercel.app/" || "http://localhost:3000/";
       const res = await axios.post(`/api/post/comment`, {
-        userID: post.creator._id,
+        userID: userID,
         postID: post._id,
         comment: comment,
       });
