@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
@@ -26,6 +27,7 @@ type dataProps = {
 };
 
 export default function EditCard({ userData }: Props) {
+  const router = useRouter()
   const [toggle, setToggle] = useState(false);
   const [data, setData] = useState<dataProps>({
     _id: "",
@@ -62,6 +64,7 @@ export default function EditCard({ userData }: Props) {
       toast.success(res.data.message);
       setData(res.data);
       setToggle(false);
+      router.push("/")
     } catch (error: any) {
       toast.error(error.message);
     } finally {

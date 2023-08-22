@@ -28,6 +28,8 @@ interface DataStore {
   setUserData: (userData: Details) => void;
   postData: [PostProps];
   setPostData: (postData: [PostProps]) => void;
+  userPost: [PostProps];
+  setUserPost: (postData: [PostProps]) => void;
   refresh: boolean;
   setRefresh: (refresh: boolean) => void;
   likeRefresh: boolean;
@@ -71,9 +73,35 @@ const useDataStore = create<DataStore>((set, get) => ({
       ],
     },
   ],
-
   setPostData: (data) => {
     set({ postData: data });
+  },
+
+  //User all posts data
+  userPost: [
+    {
+      _id: "",
+      creator: {
+        _id: "",
+        firstname: "",
+        lastname: "",
+        email: "",
+        occupation: "",
+        location: "",
+      },
+      post: "",
+      tag: "",
+      createdAt: "",
+      likes: [
+        {
+          creatorID: "",
+          likerID: "",
+        },
+      ],
+    },
+  ],
+  setUserPost: (data) => {
+    set({ userPost: data });
   },
 
   //refresh

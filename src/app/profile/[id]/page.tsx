@@ -1,5 +1,6 @@
 "use client";
 import EditCard from "@/components/Modals/EditCard";
+import UserPostList from "@/components/UserPostsList";
 import useDataStore from "@/store/useDataStore";
 import axios from "axios";
 import Link from "next/link";
@@ -25,6 +26,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
       setUserData(res.data);
     };
     fetchUser();
+    console.log(params.id);
   }, [params.id]);
 
   if (!userData) {
@@ -52,11 +54,12 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
         <div className="p-4 border-b-[1px] border-white/10">
           <h1 className="text-4xl">{`${userData?.firstname} ${userData?.lastname}`}</h1>
           <h1>{userData?.email}</h1>
-          {userID === userID && <EditCard userData={userData} />}
+          {userID === params.id && <EditCard userData={userData} />}
         </div>
       </nav>
       <div className=" flex flex-col overflow-y-scroll overflow-hidden gap-2 border-r-[1px] border-white/10 lg:border-none">
         {/* <ProfileFeed userID={userID} /> */}
+        <UserPostList id={params.id} />
       </div>
     </div>
   );

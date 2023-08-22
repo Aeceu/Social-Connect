@@ -10,7 +10,7 @@ export const GET = async (
   { params }: { params: { id: string } }
 ) => {
   try {
-    const posts = await Posts.findById({ _id: params.id }).populate({
+    const posts = await Posts.find({ creator: params.id }).populate({
       path: "creator",
       select: "-password",
     });

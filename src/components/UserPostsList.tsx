@@ -7,10 +7,10 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import PostCard from "./Cards/PostCard";
 import useDataStore from "@/store/useDataStore";
 
-export default function PostsList() {
+export default function UserPostList({ id }: { id: string }) {
   const useData = useDataStore((state) => state.userData);
-  const postData = useDataStore((state) => state.postData);
-  const setPostData = useDataStore((state) => state.setPostData);
+  const userPost = useDataStore((state) => state.userPost);
+  const setUserPost = useDataStore((state) => state.setUserPost);
   const refresh = useDataStore((state) => state.refresh);
   const setRefresh = useDataStore((state) => state.setRefresh);
   const [loading, setLoading] = useState(false);
@@ -21,8 +21,10 @@ export default function PostsList() {
         setLoading(true);
         const baseUrl =
           "https://social-connect-app.vercel.app/" || "http://localhost:3000/";
-        const res = await axios.get(`/api/post`);
-        setPostData(res.data);
+        const res = await axios.get(`/api/post/${id}`);
+        console.log(res.data);
+
+        setUserPost(res.data);
       } catch (error) {
         toast.error("Failed to fetch posts!");
       } finally {
@@ -30,6 +32,7 @@ export default function PostsList() {
       }
     };
     fetchData();
+    console.log(userPost);
   }, [refresh]);
 
   async function handleDeletepost(id: string) {
@@ -59,13 +62,13 @@ export default function PostsList() {
         </div>
       ) : (
         <>
-          {postData.length <= 0 ? (
+          {userPost.length <= 0 ? (
             <div className="w-full flex justify-center">
               <h1 className="text-2xl p-4">No post available...</h1>
             </div>
           ) : (
             <div className="flex flex-col-reverse">
-              {postData.map((post, i) => (
+              {userPost.map((post, i) => (
                 <PostCard
                   post={post}
                   key={i}
